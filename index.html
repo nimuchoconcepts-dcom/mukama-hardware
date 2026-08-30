@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUKAMA MWESIGWA Hardware & General Merchandise</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Custom Theme ── */
+    :root {
+      --industrial-blue: #1a3a5c;
+      --safety-orange: #e86f1c;
+      --dark-grey: #2d2d2d;
+      --light-grey: #f4f6f9;
+      --white: #ffffff;
+      --footer-bg: #0a1a2f;
+      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 8px 40px rgba(0, 0, 0, 0.10);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+      --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--dark-grey);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .font-poppins { font-family: 'Poppins', sans-serif; }
+
+    /* ── Typography Hierarchy (Fully Responsive) ── */
+    .hero-title {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .hero-title .highlight {
+      color: var(--safety-orange);
+    }
+    .hero-title .light {
+      color: #ffffff;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .section-title span { color: var(--safety-orange); }
+    .section-subtitle {
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      color: #5a6a7a;
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* ── Company Name in Header ── */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      color: var(--safety-orange);
+      flex-shrink: 0;
+    }
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-name .main {
+      font-size: clamp(0.95rem, 1.5vw, 1.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .brand-name .main .blue { color: var(--industrial-blue); }
+    .brand-name .main .orange { color: var(--safety-orange); }
+    .brand-name .sub {
+      font-size: clamp(0.45rem, 0.7vw, 0.7rem);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--dark-grey);
+      opacity: 0.7;
+      white-space: nowrap;
+    }
+    @media (max-width: 400px) {
+      .brand-name .sub { font-size: 0.4rem; letter-spacing: 0.02em; }
+      .brand-wrapper { gap: 0.3rem; }
+    }
+
+    /* ── Footer Brand ── */
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .footer-brand .main {
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .footer-brand .main .blue { color: var(--industrial-blue); }
+    .footer-brand .main .orange { color: var(--safety-orange); }
+    .footer-brand .sub {
+      font-size: clamp(0.45rem, 0.7vw, 0.7rem);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ── Buttons ── */
+    .btn-primary-custom {
+      background: var(--safety-orange);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      border: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(232, 111, 28, 0.35);
+      white-space: nowrap;
+    }
+    .btn-primary-custom:hover {
+      background: #d45f14;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232, 111, 28, 0.45);
+      color: #fff;
+    }
+    @media (max-width: 576px) {
+      .btn-primary-custom { padding: 10px 18px; font-size: 0.8rem; white-space: normal; }
+    }
+
+    .btn-secondary-custom {
+      background: var(--industrial-blue);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      border: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(26, 58, 92, 0.30);
+      white-space: nowrap;
+    }
+    .btn-secondary-custom:hover {
+      background: #0f2a44;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(26, 58, 92, 0.40);
+      color: #fff;
+    }
+    @media (max-width: 576px) {
+      .btn-secondary-custom { padding: 10px 18px; font-size: 0.8rem; white-space: normal; }
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--industrial-blue);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1vw, 0.95rem);
+      border: 2px solid var(--industrial-blue);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-custom:hover {
+      background: var(--industrial-blue);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── Cards ── */
+    .card-custom {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      height: 100%;
+    }
+    .card-custom:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      height: 100%;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-card img {
+      width: 100%;
+      height: clamp(180px, 25vw, 220px);
+      object-fit: cover;
+    }
+    .product-card .product-price {
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--safety-orange);
+    }
+    .product-card .card-body { padding: 1rem; }
+
+    .category-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      height: 100%;
+    }
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .category-card img {
+      width: 100%;
+      height: clamp(140px, 20vw, 200px);
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .category-card:hover img { transform: scale(1.04); }
+    .category-card .cat-name {
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      font-weight: 600;
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    /* ── Hero ── */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(26, 58, 92, 0.88) 0%, rgba(26, 58, 92, 0.70) 50%, rgba(26, 58, 92, 0.55) 100%);
+    }
+
+    /* ── Floating WhatsApp ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: #25D366;
+      color: #fff;
+      width: clamp(50px, 6vw, 64px);
+      height: clamp(50px, 6vw, 64px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(24px, 3vw, 32px);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.45);
+      transition: var(--transition);
+      text-decoration: none;
+      animation: pulse-wa 2.4s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.10);
+      box-shadow: 0 10px 40px rgba(37, 211, 102, 0.60);
+      color: #fff;
+    }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 30px rgba(37, 211, 102, 0.45); }
+      50% { box-shadow: 0 6px 50px rgba(37, 211, 102, 0.75); }
+    }
+
+    /* ── Header ── */
+    .header-sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      transition: var(--transition);
+    }
+    .header-scrolled {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ── Footer ── */
+    .footer-dark-navy {
+      background-color: #0a1a2f;
+    }
+
+    /* ── Map & Video ── */
+    .map-container iframe {
+      width: 100%;
+      height: clamp(250px, 35vw, 320px);
+      border-radius: 20px;
+      border: 0;
+    }
+    .video-container video {
+      width: 100%;
+      border-radius: 20px;
+      max-height: clamp(180px, 25vw, 280px);
+      object-fit: cover;
+    }
+    .video-container img {
+      width: 100%;
+      border-radius: 20px;
+      max-height: clamp(180px, 25vw, 280px);
+      object-fit: cover;
+    }
+
+    /* ── Form ── */
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: clamp(0.9rem, 1vw, 1rem);
+      transition: var(--transition);
+      background: #fafbfc;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: var(--industrial-blue);
+      box-shadow: 0 0 0 4px rgba(26, 58, 92, 0.10);
+      background: #fff;
+    }
+    .form-label {
+      font-weight: 600;
+      font-size: clamp(0.85rem, 1vw, 0.95rem);
+      color: var(--dark-grey);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children>* {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .stagger-children.visible>*:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-children.visible>*:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children.visible>*:nth-child(3) { transition-delay: 0.19s; }
+    .stagger-children.visible>*:nth-child(4) { transition-delay: 0.26s; }
+    .stagger-children.visible>*:nth-child(5) { transition-delay: 0.33s; }
+    .stagger-children.visible>*:nth-child(6) { transition-delay: 0.40s; }
+    .stagger-children.visible>* { opacity: 1; transform: translateY(0); }
+
+    /* ── Section spacing ── */
+    .section-padding { padding: clamp(50px, 8vw, 80px) 0; }
+
+    /* ── Utilities ── */
+    .hover-orange:hover { color: var(--safety-orange) !important; }
+    .hover-white:hover { color: #fff !important; }
+    .bg-orange { background: var(--safety-orange); }
+    .text-white-80 { color: rgba(255,255,255,0.8); }
+    .text-white-70 { color: rgba(255,255,255,0.7); }
+    .text-white-90 { color: rgba(255,255,255,0.9); }
+    .text-white-40 { color: rgba(255,255,255,0.4); }
+    .text-white-50 { color: rgba(255,255,255,0.5); }
+    .hover-bg-white-10:hover { background: rgba(255,255,255,0.1); }
+    .animate-bounce { animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* ── Responsive Navigation Toggle ── */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 360px;
+      height: 100vh;
+      background: #fff;
+      z-index: 1050;
+      padding: 32px 28px;
+      transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: var(--shadow-lg);
+      overflow-y: auto;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.40);
+      z-index: 1040;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ──── HEADER ──── -->
+  <header id="header" class="header-sticky">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between" style="height: clamp(60px, 10vh, 80px);">
+        <a href="#" class="brand-wrapper">
+          <i class="fas fa-hard-hat brand-logo"></i>
+          <div class="brand-name">
+            <span class="main">
+              <span class="blue">MUKAMA</span>
+              <span class="orange">MWESIGWA</span>
+            </span>
+            <span class="sub d-none d-sm-block">Hardware &amp; General Merchandise</span>
+            <span class="sub d-sm-none">Hardware &amp; Merchandise</span>
+          </div>
+        </a>
+
+        <nav class="d-none d-lg-flex align-items-center gap-3">
+          <a href="#home" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">Home</a>
+          <a href="#about" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">About</a>
+          <a href="#materials" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">Materials</a>
+          <a href="#categories" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">Categories</a>
+          <a href="#products" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">Products</a>
+          <a href="#contact" class="text-decoration-none text-dark fw-semibold hover-orange" style="font-size:clamp(0.8rem, 1vw, 0.95rem);">Contact</a>
+        </nav>
+
+        <button id="menuToggle" class="d-lg-none border-0 bg-transparent p-2" style="color: var(--industrial-blue); font-size: 1.8rem;">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ──── MOBILE MENU ──── -->
+  <div id="mobileOverlay" class="mobile-overlay"></div>
+  <div id="mobileMenu" class="mobile-menu">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <span class="fs-4 fw-bold font-poppins" style="color:var(--industrial-blue);">Menu</span>
+      <button id="menuClose" class="border-0 bg-transparent fs-2"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="d-flex flex-column gap-4 fs-5 fw-medium">
+      <a href="#home" class="text-decoration-none text-dark">Home</a>
+      <a href="#about" class="text-decoration-none text-dark">About</a>
+      <a href="#materials" class="text-decoration-none text-dark">Materials</a>
+      <a href="#categories" class="text-decoration-none text-dark">Categories</a>
+      <a href="#products" class="text-decoration-none text-dark">Products</a>
+      <a href="#contact" class="text-decoration-none text-dark">Contact</a>
+      <hr />
+      <a href="#contact" class="btn-primary-custom text-center justify-content-center text-decoration-none">Get Quote</a>
+    </nav>
+  </div>
+
+  <!-- ──── MAIN ──── -->
+  <main>
+
+    <!-- ── HERO ── -->
+    <section id="home" class="position-relative d-flex align-items-center" style="min-height:92vh;background:url('images/gabions.JPG');">
+      <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+      <div class="container position-relative z-1 text-white py-5">
+        <div class="fade-up visible" style="max-width:720px;">
+          <span class="d-inline-block bg-orange text-white fw-bold text-uppercase px-3 py-1 rounded-pill mb-3" style="background:var(--safety-orange);font-size:clamp(0.6rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">
+            <i class="fas fa-hard-hat me-2"></i> Trusted Since 2008
+          </span>
+          <h1 class="hero-title">
+            <span class="highlight">MUKAMA</span>
+            <span class="highlight">MWESIGWA</span>
+            <span class="light">HARDWARE</span>
+          </h1>
+          <p class="hero-sub mt-3 text-white-90">“Building Your Dreams With Quality Materials”</p>
+          <p class="fs-5 text-white-80" style="max-width:520px;line-height:1.6;font-size:clamp(0.95rem, 1.2vw, 1.1rem);">Your trusted supplier of quality building materials, tools and general merchandise in Kampala, Uganda.</p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#products" class="btn-primary-custom text-decoration-none"><i class="fas fa-store"></i> Shop Products</a>
+            <a href="#contact" class="btn-secondary-custom bg-white bg-opacity-10 border border-white border-opacity-25 text-decoration-none"><i class="fas fa-file-invoice"></i> Get Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute bottom-0 start-50 translate-middle-x text-white-50 text-center pb-3 animate-bounce">
+        <span class="d-block small fw-light">Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- ── DELIVERY IN ACTION (MOV VIDEO) ── -->
+    <section class="section-padding" style="background:var(--white);">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Delivery</span>
+          <h2 class="section-title mt-2">Delivery in <span>Action</span></h2>
+          <p class="section-subtitle mx-auto">Watch our team loading and delivering quality materials right to your site.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10 fade-up">
+            <div class="video-container">
+              <video controls muted playsinline autoplay loop class="w-100 rounded-4 shadow-lg" style="max-height:450px; object-fit:cover;">
+                <source src="images/delivery.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="text-muted mt-2 fst-italic"> Reliable delivery across Kampala and beyond.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section-padding" style="background:var(--industrial-blue);color:#fff;">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6 fade-up">
+            <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">About Us</span>
+            <h2 class="display-4 fw-bold font-poppins mt-2" style="font-size:clamp(1.8rem, 4vw, 3rem);">Building Kampala <br class="d-none d-md-block" /><span style="color:var(--safety-orange);">With Quality</span></h2>
+            <p class="text-white-80 fs-6 lh-base mt-3" style="font-size:clamp(0.95rem, 1.1vw, 1.05rem);line-height:1.7;"><strong>MUKAMA MWESIGWA Hardware and General Merchandise</strong> is a premier supplier of construction materials, tools, and hardware solutions in Kampala, Uganda. With over 15 years of experience, we serve contractors, developers, businesses, and individual builders with top-tier products and reliable service.</p>
+            <p class="text-white-70 fs-6 lh-base" style="font-size:clamp(0.9rem, 1vw, 1rem);line-height:1.7;">From cement and steel to roofing, plumbing, and electrical supplies — we are your one-stop destination for building excellence.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#contact" class="btn-primary-custom text-decoration-none"><i class="fas fa-handshake"></i> Work With Us</a>
+              <a href="#contact" class="btn-outline-custom text-white border-white border-opacity-25 hover-bg-white-10 text-decoration-none" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get Quote</a>
+            </div>
+          </div>
+          <div class="col-lg-6 position-relative fade-up">
+            <img src="images/gabi.JPG" alt="Warehouse" class="img-fluid rounded-4 shadow-lg" style="object-fit:cover;height:clamp(250px, 40vw, 380px);width:100%;" />
+            <div class="position-absolute bottom-0 end-0 bg-orange text-white p-3 rounded-4 shadow-lg d-none d-sm-block" style="background:var(--safety-orange);transform:translate(20px,20px);">
+              <i class="fas fa-trophy fs-1"></i>
+              <span class="d-block fw-bold mt-1">15+ Years</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MATERIALS ── -->
+    <section id="materials" class="section-padding" style="background:var(--light-grey);">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Materials</span>
+          <h2 class="section-title mt-2">Our <span>Materials</span></h2>
+          <p class="section-subtitle mx-auto">High-quality steel, iron, and metal products for all construction needs.</p>
+        </div>
+        <div class="row g-4 stagger-children" id="materialsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── CATEGORIES ── -->
+    <section id="categories" class="section-padding" style="background:var(--white);">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Categories</span>
+          <h2 class="section-title mt-2">Shop by <span>Category</span></h2>
+          <p class="section-subtitle mx-auto">Explore our wide range of quality building materials and hardware supplies.</p>
+        </div>
+        <div class="row g-4 stagger-children" id="categoriesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── PRODUCTS ── -->
+    <section id="products" class="section-padding" style="background:var(--light-grey);">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Products</span>
+          <h2 class="section-title mt-2">Popular <span>Products</span></h2>
+          <p class="section-subtitle mx-auto">Top-quality materials trusted by contractors and builders across Uganda.</p>
+        </div>
+        <div class="row g-4 stagger-children" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── REVIEWS ── -->
+    <section id="reviews" class="section-padding bg-white">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Testimonials</span>
+          <h2 class="section-title mt-2">What Our <span>Customers Say</span></h2>
+          <p class="section-subtitle mx-auto">Real reviews from contractors, builders, and businesses we serve.</p>
+        </div>
+        <div class="row g-4 stagger-children" id="reviewsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── LOCATION & VIDEOS ── -->
+    <section class="section-padding" style="background:var(--light-grey);">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Location</span>
+          <h2 class="section-title mt-2">Find Us <span>Here</span></h2>
+          <p class="section-subtitle mx-auto">Visit our showroom at Nakasero Market Street, near Steel and Tube.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 fade-up">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7457!2d32.5805!3d0.3136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb2f7b8f6b8b%3A0x2b8f6b8b6b8b6b8b!2sNakasero%20Market%20Street%2C%20Kampala!5e0!3m2!1sen!2sug!4v1610000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Replaced first video with JPG image named "location" -->
+            <div class="video-container mb-3 fade-up">
+              <img src="images/location.jpg" alt="Location image on the banner – Nakasero Market Street" class="w-100 rounded-4 shadow-sm" />
+              <p class="small text-muted mt-1"> location image view on the banner – Nakasero Market Street</p>
+            </div>
+            <div class="video-container fade-up">
+              <video controls muted playsinline class="w-100 rounded-4">
+                <source src="images/location1.mp4" type="video/mp4" />
+              </video>
+              <p class="small text-muted mt-1">location video view Nakasero Street</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section-padding bg-white">
+      <div class="container">
+        <div class="text-center mb-5 fade-up">
+          <span class="text-uppercase fw-semibold" style="color:var(--safety-orange);font-size:clamp(0.7rem, 0.8vw, 0.8rem);letter-spacing:0.05em;">Contact</span>
+          <h2 class="section-title mt-2">Get In <span>Touch</span></h2>
+          <p class="section-subtitle mx-auto">Reach out to us for inquiries, quotes, or support.</p>
+        </div>
+        <div class="row g-5">
+          <div class="col-lg-6 fade-up">
+            <h4 class="fw-bold" style="color:var(--industrial-blue);font-size:clamp(1.2rem, 1.5vw, 1.4rem);"><i class="fas fa-store" style="color:var(--safety-orange);"></i> MUKAMA MWESIGWA Hardware & General Merchandise</h4>
+            <p class="text-muted" style="font-size:clamp(0.9rem, 1vw, 1rem);">Nakasero Market Street, near Steel and Tube, Kampala, Uganda</p>
+
+            <div class="row g-3 mt-3">
+              <div class="col-sm-6">
+                <div class="card-custom d-flex align-items-start gap-3">
+                  <i class="fas fa-phone-alt fs-2" style="color:var(--safety-orange);"></i>
+                  <div>
+                    <p class="fw-bold small text-uppercase mb-0" style="font-size:0.7rem;">Call</p>
+                    <a href="tel:+256744530199" class="text-muted text-decoration-none d-block" style="font-size:clamp(0.85rem, 0.9vw, 0.95rem);">+256 744 530 199</a>
+                    <a href="tel:+256701931629" class="text-muted text-decoration-none d-block" style="font-size:clamp(0.85rem, 0.9vw, 0.95rem);">+256 701 931 629</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-custom d-flex align-items-start gap-3">
+                  <i class="fab fa-whatsapp fs-2" style="color:#25D366;"></i>
+                  <div>
+                    <p class="fw-bold small text-uppercase mb-0" style="font-size:0.7rem;">WhatsApp</p>
+                    <a href="https://wa.me/256744530199" target="_blank" class="text-muted text-decoration-none d-block" style="font-size:clamp(0.85rem, 0.9vw, 0.95rem);">+256 744 530 199</a>
+                    <a href="https://wa.me/256701931629" target="_blank" class="text-muted text-decoration-none d-block" style="font-size:clamp(0.85rem, 0.9vw, 0.95rem);">+256 701 931 629</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-custom d-flex align-items-start gap-3">
+                  <i class="fas fa-envelope fs-2" style="color:var(--industrial-blue);"></i>
+                  <div>
+                    <p class="fw-bold small text-uppercase mb-0" style="font-size:0.7rem;">Email</p>
+                    <a href="mailto:mw9204899@gmail.com" class="text-muted text-decoration-none" style="font-size:clamp(0.85rem, 0.9vw, 0.95rem);">mw9204899@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-custom d-flex align-items-start gap-3">
+                  <i class="fas fa-clock fs-2" style="color:var(--industrial-blue);"></i>
+                  <div>
+                    <p class="fw-bold small text-uppercase mb-0" style="font-size:0.7rem;">Hours</p>
+                    <p class="text-muted mb-0" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">Mon–Fri: 7:30am – 6:00pm</p>
+                    <p class="text-muted" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">Sat: 8:00am – 4:00pm</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 fade-up">
+            <div class="card-custom">
+              <h4 class="fw-bold mb-4" style="color:var(--industrial-blue);font-size:clamp(1.1rem, 1.3vw, 1.3rem);">Send Us a Message</h4>
+              <form id="contactForm">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Full Name *</label>
+                  <input type="text" class="form-input" placeholder="Enter your full name" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Email Address *</label>
+                  <input type="email" class="form-input" placeholder="Enter your email" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Phone Number</label>
+                  <input type="tel" class="form-input" placeholder="+256 700 000 000" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Subject</label>
+                  <select class="form-input">
+                    <option>General Inquiry</option>
+                    <option>Bulk Quote Request</option>
+                    <option>Order Support</option>
+                    <option>Delivery Inquiry</option>
+                    <option>Partnership / Wholesale</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Message *</label>
+                  <textarea rows="4" class="form-input" placeholder="Tell us what you need…" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary-custom w-100 justify-content-center"><i class="fas fa-paper-plane"></i> Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ──── FOOTER ──── -->
+  <footer class="footer-dark-navy text-white-80 pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 pb-4 border-bottom border-white border-opacity-10">
+        <div class="col-sm-6 col-lg-3">
+          <a href="#" class="text-decoration-none">
+            <div class="footer-brand">
+              <span class="main">
+                <span class="blue">MUKAMA</span>
+                <span class="orange">MWESIGWA</span>
+              </span>
+              <span class="sub">Hardware &amp; General Merchandise</span>
+            </div>
+          </a>
+          <p class="small text-white-50 mt-2" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);line-height:1.6;">Building your dreams with quality materials. Trusted supplier in Kampala, Uganda.</p>
+          <div class="d-flex flex-wrap gap-3 mt-3">
+            <a href="https://www.facebook.com/mukamamwesigwahardware" target="_blank" class="text-white-50 text-decoration-none fs-5 hover-orange"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com/mukamahardware" target="_blank" class="text-white-50 text-decoration-none fs-5 hover-orange"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/mukamamwesigwahardware" target="_blank" class="text-white-50 text-decoration-none fs-5 hover-orange"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@mukamamwesigwahardware" target="_blank" class="text-white-50 text-decoration-none fs-5 hover-orange"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@mukamamwesigwahardware" target="_blank" class="text-white-50 text-decoration-none fs-5 hover-orange"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="text-white fw-bold small text-uppercase" style="font-size:0.75rem;letter-spacing:0.05em;">Quick Links</h5>
+          <ul class="list-unstyled small" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">
+            <li><a href="#home" class="text-white-50 text-decoration-none hover-orange">Home</a></li>
+            <li><a href="#about" class="text-white-50 text-decoration-none hover-orange">About</a></li>
+            <li><a href="#materials" class="text-white-50 text-decoration-none hover-orange">Materials</a></li>
+            <li><a href="#categories" class="text-white-50 text-decoration-none hover-orange">Categories</a></li>
+            <li><a href="#products" class="text-white-50 text-decoration-none hover-orange">Products</a></li>
+            <li><a href="#contact" class="text-white-50 text-decoration-none hover-orange">Contact</a></li>
+            <li><a href="#privacy-policy" class="text-white-50 text-decoration-none hover-orange">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="text-white fw-bold small text-uppercase" style="font-size:0.75rem;letter-spacing:0.05em;">Categories</h5>
+          <ul class="list-unstyled small" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">
+            <li><a href="#" class="text-white-50 text-decoration-none hover-orange">Cement & Building</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none hover-orange">Steel & Metal</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none hover-orange">Roofing Materials</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none hover-orange">Paints & Finishes</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none hover-orange">Plumbing & Electrical</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="text-white fw-bold small text-uppercase" style="font-size:0.75rem;letter-spacing:0.05em;">Contact</h5>
+          <ul class="list-unstyled small" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">
+            <li class="d-flex align-items-start gap-2"><i class="fas fa-map-marker-alt mt-1" style="color:var(--safety-orange);"></i> Nakasero Market St</li>
+            <li class="d-flex align-items-start gap-2"><i class="fas fa-phone mt-1" style="color:var(--safety-orange);"></i> <a href="tel:+256744530199" class="text-white-50 text-decoration-none hover-white">+256 744 530 199</a></li>
+            <li class="d-flex align-items-start gap-2"><i class="fab fa-whatsapp mt-1" style="color:#25D366;"></i> <a href="https://wa.me/256744530199" target="_blank" class="text-white-50 text-decoration-none hover-white">+256 744 530 199</a></li>
+            <li class="d-flex align-items-start gap-2"><i class="fas fa-envelope mt-1" style="color:var(--safety-orange);"></i> <a href="mailto:mw9204899@gmail.com" class="text-white-50 text-decoration-none hover-white">mw9204899@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Centered copyright text -->
+      <div class="text-center mt-3 small text-white-40" style="font-size:clamp(0.7rem, 0.8vw, 0.85rem);">
+        <span>&copy; <span id="currentYear"></span> MUKAMA MWESIGWA Hardware &amp; General Merchandise. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ──── FLOATING WHATSAPP ──── -->
+  <a href="https://wa.me/256744530199" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ──── JAVASCRIPT ──── -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+    // ── Data ──
+
+    const categories = [
+      { name: 'Cement & Building', img: 'images/cement.JPG' },
+      { name: 'Steel & Metal', img: 'images/steel.JPG' },
+      { name: 'Roofing Materials', img: 'images/roofing.JPG' },
+      { name: 'Paints & Finishes', img: 'images/paints.JPG' },
+      { name: 'Plumbing Supplies', img: 'images/plumbing.JPG' },
+      { name: 'Electrical Supplies', img: 'images/electrical.JPG' },
+      { name: 'Tiles & Sanitary', img: 'images/tiles.JPG' },
+      { name: 'Hand Tools', img: 'images/handtools.JPG' },
+    ];
+
+    const featuredProducts = [
+      { name: 'ironbars', price:'UGX 20,000' , img: 'images/ironbars.JPG' },
+      { name: 'Gauge 12 gabions', price: 'UGX 150,000', img: 'images/gabionss.JPG' },
+      { name: 'Green Coated Gabions pvc coated', price: 'UGX 270,000', img: 'images/gabionsss.JPG' },
+      { name: 'Steel Rebar', price: 'UGX 20,000', img: 'images/steelrebar2.JPG' },
+      { name: 'Iron Sheets', price: 'UGX 23,000', img: 'images/ironsheets.JPG' },
+      { name: 'Pipes ', price: 'UGX 14,000', img: 'images/pipes.JPG' },
+      { name: 'Guage 10 Gabions', price: 'UGX 180,000', img: 'images/gabions.JPG' },
+      { name: 'Original Gabion macferri ', price: 'UGX 250,000', img: 'images/gabi.JPG' },
+    ];
+
+    const materialsList = [
+      { name: 'Angle Lines', img: 'images/anglelines.JPG' },
+      { name: 'Chain Links', img: 'images/chainlinks.JPG' },
+      { name: 'Hollow Sections', img: 'images/hollowsections.JPG' },
+      { name: 'Iron Bars', img: 'images/ironbars.JPG' },
+      { name: 'Mild Steel Plates', img: 'images/middlesteelplates.JPG' },
+      { name: 'Gabion Boxes', img: 'images/gabionsboxes.JPG' },
+      { name: 'Gabion Cages', img: 'images/gabioncages.JPG' },
+      { name: 'Barbed Wires', img: 'images/barbedwire.JPG' },
+      { name: 'Expanded Metals', img: 'images/expandedmetals.JPG' },
+    ];
+
+    const reviews = [
+      { name: 'James Okello', role: 'Contractor', text: 'MUKAMA MWESIGWA Hardware has been my go-to supplier for over five years. Their cement and steel quality is unmatched, and delivery is always on time.', stars: 5, img: 'https://i.pravatar.cc/100?img=' },
+      { name: 'Sarah Nambi', role: 'Home Builder', text: 'I built my dream home with materials from this hardware. The team guided me on the best roofing and paint options. Professional service.', stars: 5, img: 'https://i.pravatar.cc/100?img=' },
+      { name: 'David Muwonge', role: 'Real Estate Developer', text: 'We use MUKAMA MWESIGWA for all our bulk supplies. Competitive pricing, consistent stock, and excellent customer support.', stars: 5, img: 'https://i.pravatar.cc/100?img=' },
+    ];
+
+    // ── Render ──
+
+    function renderCategories() {
+      const grid = document.getElementById('categoriesGrid');
+      grid.innerHTML = categories.map(c => `
+        <div class="col-6 col-sm-4 col-lg-3">
+          <div class="category-card">
+            <img src="${c.img}" alt="${c.name}" loading="lazy" />
+            <div class="cat-name">${c.name}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderFeaturedProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = featuredProducts.map(p => `
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" />
+            <div class="card-body">
+              <h5 class="fw-bold fs-6" style="font-size:clamp(0.9rem, 1vw, 1rem);">${p.name}</h5>
+              <p class="product-price">${p.price}</p>
+              <a href="https://wa.me/256744530199?text=Hello%20MUKAMA%20MWESIGWA%20Hardware,%20I%20am%20interested%20in%20${encodeURIComponent(p.name)}" target="_blank" class="btn-primary-custom w-100 justify-content-center py-2" style="font-size:clamp(0.8rem, 0.9vw, 0.9rem);">Add to Enquiry</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderMaterials() {
+      const grid = document.getElementById('materialsGrid');
+      grid.innerHTML = materialsList.map(m => `
+        <div class="col-6 col-sm-4 col-lg-3">
+          <div class="product-card">
+            <img src="${m.img}" alt="${m.name}" loading="lazy" />
+            <div class="card-body text-center">
+              <h5 class="fw-bold fs-6" style="font-size:clamp(0.85rem, 0.95vw, 0.95rem);">${m.name}</h5>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderReviews() {
+      const grid = document.getElementById('reviewsGrid');
+      grid.innerHTML = reviews.map(r => `
+        <div class="col-md-4">
+          <div class="card-custom">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="${r.img}" alt="${r.name}" class="rounded-circle" width="50" height="50" style="object-fit:cover;" />
+              <div>
+                <h5 class="fw-bold mb-0" style="font-size:clamp(0.95rem, 1vw, 1.05rem);">${r.name}</h5>
+                <p class="small text-muted mb-0">${r.role}</p>
+              </div>
+            </div>
+            <div class="stars text-warning mb-2">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+            <p class="card-text" style="font-size:clamp(0.85rem, 0.95vw, 0.95rem);">“${r.text}”</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderCategories();
+    renderFeaturedProducts();
+    renderMaterials();
+    renderReviews();
+
+    // ── Mobile Menu ──
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // ── Sticky Header ──
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('header-scrolled', window.scrollY > 40);
+    });
+
+    // ── Intersection Observer for animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up, .stagger-children').forEach(el => observer.observe(el));
+
+    // ── Contact Form ──
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert(' Thank you! Your message has been sent. We will get back to you shortly.');
+      this.reset();
+    });
+
+    // ── Dynamic Year ──
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

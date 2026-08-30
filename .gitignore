@@ -1,0 +1,17 @@
+﻿# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs and caches
+*.log
+*.cache
+
+# Node modules (if any)
+node_modules/
